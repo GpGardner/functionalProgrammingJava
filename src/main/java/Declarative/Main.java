@@ -22,6 +22,7 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    //Predicate Example
     static final Predicate<Person> filterByGenderFemale = person -> person.getGender().equals(Person.Gender.FEMALE);
 
 }
