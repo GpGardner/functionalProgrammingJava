@@ -3,6 +3,7 @@ package Declarative;
 import Model.Person;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -14,9 +15,13 @@ public class Main {
                 new Person("Sarah", Person.Gender.FEMALE)
         );
 
-        people.stream()
-                .filter(person -> person.getGender().equals(Person.Gender.FEMALE))
-                .collect(Collectors.toList())
+        List<Person> femaleList = people.stream()
+                .filter(filterByGenderFemale)
+                .collect(Collectors.toList());
+        femaleList
                 .forEach(System.out::println);
     }
+
+    static final Predicate<Person> filterByGenderFemale = person -> person.getGender().equals(Person.Gender.FEMALE);
+
 }
